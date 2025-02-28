@@ -12475,3 +12475,70 @@ p.des {
 }
 
 /* جعل الـ Navbar متجاوب مع الشاشات الصغيرة */
+.logo-box {
+  display: flex;
+  align-items: center;
+}
+
+.logo-box .logo img {
+  height: 80px; /* حجم ثابت للشعار */
+  width: auto;
+  max-width: 100%;
+}
+
+/* ضبط الـ Navbar بحيث لا يؤثر على الشعار */
+.nav-outer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+.main-menu {
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.navigation {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 20px;
+}
+
+.navigation li {
+  list-style: none;
+}
+
+.navigation li a {
+  font-size: 16px;
+  padding: 10px 15px;
+  font-weight: bold;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* ضبط الشعار على الشاشات الكبيرة (1440px وما فوق) */
+@media (min-width: 1440px) {
+  .logo-box .logo img {
+      height: 100px; /* زيادة الحجم قليلاً للشاشات الكبيرة */
+  }
+}
+
+/* الحفاظ على الحجم في الشاشات الصغيرة */
+@media (max-width: 768px) {
+  .logo-box .logo img {
+      height: 80px; /* نفس الحجم */
+  }
+
+  .navigation {
+      gap: 10px;
+  }
+
+  .navigation li a {
+      font-size: 14px;
+      padding: 8px 10px;
+  }
+}
