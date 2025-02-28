@@ -12396,3 +12396,82 @@ p.des {
   fill: white !important;
 }
 
+
+
+
+/* التأكد من أن القائمة لا تلتف */
+
+/* تحسين العرض على الشاشات الكبيرة */
+@media (min-width: 1400px) {
+  .nav-outer {
+      max-width: 1600px; /* زياده الحد الأقصى للعرض */
+  }
+}
+.nav-outer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+/* التأكد من أن الشعار لا يتغير حجمه */
+.logo-box {
+  display: flex;
+  align-items: center;
+}
+
+.logo-box .logo img {
+  max-height: 80px; /* يمكنك تعديل الحجم حسب الحاجة */
+  width: auto;
+}
+
+/* ضبط القائمة بجانب الشعار */
+.main-menu {
+  flex-grow: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.navigation {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 20px;
+}
+
+.navigation li {
+  list-style: none;
+}
+
+.navigation li a {
+  font-size: 16px;
+  padding: 10px 15px;
+  font-weight: bold;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* تحسين التصميم للشاشات الصغيرة */
+@media (max-width: 768px) {
+  .nav-outer {
+      flex-direction: row;
+      align-items: center;
+  }
+
+  .main-menu {
+      display: flex;
+      justify-content: flex-end;
+  }
+
+  .navigation {
+      gap: 10px;
+  }
+
+  .navigation li a {
+      font-size: 14px;
+      padding: 8px 10px;
+  }
+}
+
+/* جعل الـ Navbar متجاوب مع الشاشات الصغيرة */
