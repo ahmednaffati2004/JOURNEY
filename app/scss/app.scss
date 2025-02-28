@@ -1,0 +1,330 @@
+/**
+  * Name: Vitour - Travel & Tour Booking HTML Template
+  * Version: 1.0.2
+  * Author: Themesflat
+  * Author URI: http://www.themesflat.com
+*/
+@forward './component/';
+@forward './abstracts/';
+@forward  './style.scss';
+@forward  './responsive.scss';
+// =========================
+// 1. تعريف المتغيرات (Variables)
+// =========================
+$primary-color: #112D4E;
+$secondary-color: #F2A20C;
+$accent-color: #F9A826;
+$bg-dark: #1A3B5A;
+$bg-light: #F9F9F9;
+$font-base: 'Poppins', sans-serif;
+
+// =========================
+// 2. ميكسينات (Mixins)
+// =========================
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin transition($props, $duration: 0.3s, $ease: ease-in-out) {
+  transition: $props $duration $ease;
+}
+
+// =========================
+// 3. إعادة ضبط القواعد العامة (Reset & Global Styles)
+// =========================
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $font-base;
+  background-color: $bg-dark;
+  color: $secondary-color;
+  line-height: 1.6;
+}
+
+// =========================
+// 4. تصميم الحاوية الرئيسية (Container) مع تأثير Glassmorphism
+// =========================
+.cruise-container {
+  @include flex-center;
+  flex-direction: column;
+  padding: 60px 30px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 25px;
+  margin: 40px auto;
+  max-width: 1200px;
+  position: relative;
+  overflow: hidden;
+
+  // تأثير فقاعات عائمة في الخلفية
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    filter: blur(60px);
+    animation: float 10s ease-in-out infinite alternate;
+  }
+  &::before {
+    width: 200px;
+    height: 200px;
+    top: -100px;
+    left: -100px;
+  }
+  &::after {
+    width: 150px;
+    height: 150px;
+    bottom: -80px;
+    right: -80px;
+  }
+}
+
+// =========================
+// 5. تحريك الفقاعات (Keyframes)
+// =========================
+@keyframes float {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(30px, 30px); }
+}
+
+// =========================
+// 6. تصميم العنوان (Title)
+// =========================
+.cruise-title {
+  font-size: 3.5rem;
+  font-weight: bold;
+  color: $secondary-color;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 40px;
+  position: relative;
+  z-index: 2;
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 6px;
+    background: $accent-color;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 3px;
+  }
+}
+
+// =========================
+// 7. تخطيط الشبكة (Grid Layout)
+// =========================
+.cruise-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  width: 100%;
+  margin-top: 30px;
+  z-index: 2;
+}
+
+// =========================
+// 8. تصميم بطاقة الرحلة (Cruise Card)
+// =========================
+.cruise-item {
+  background: $bg-light;
+  padding: 30px;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  border-left: 6px solid $accent-color;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+  @include transition(all, 0.4s);
+
+  &:hover {
+    transform: scale(1.03);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: -50px;
+    width: 150px;
+    height: 150px;
+    background: $secondary-color;
+    opacity: 0.2;
+    transform: rotate(45deg);
+    border-radius: 50%;
+    z-index: -1;
+  }
+}
+
+// =========================
+// 9. تصميم نصوص البطاقات (Card Text)
+// =========================
+.cruise-item-text {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: $primary-color;
+  text-align: center;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 2;
+
+  i {
+    margin-right: 10px;
+    color: $accent-color;
+    @include transition(transform, 0.3s);
+  }
+  &:hover i {
+    transform: scale(1.2);
+  }
+}
+
+// =========================
+// 10. تصميم الصور داخل البطاقات (Card Images)
+// =========================
+.cruise-images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 20px;
+
+  img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 15px;
+    border: 4px solid $accent-color;
+    cursor: pointer;
+    @include transition(transform 0.3s, filter 0.3s);
+
+    &:hover {
+      transform: scale(1.15) rotate(3deg);
+      filter: brightness(1.2);
+    }
+  }
+}
+
+// =========================
+// 11. زر الدعوة لاتخاذ إجراء (CTA Button)
+// =========================
+.cruise-btn {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  background: $accent-color;
+  color: $primary-color;
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  margin-top: 20px;
+  @include transition(background, 0.3s, transform, 0.3s);
+
+  &:hover {
+    background: $primary-color;
+    color: $bg-light;
+    transform: translateY(-5px);
+  }
+}
+
+// =========================
+// 12. تصميم المودال (Modal) لتكبير الصورة
+// =========================
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  @include flex-center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+  z-index: 1000;
+
+  &.open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .modal-content {
+    position: relative;
+    max-width: 90%;
+    max-height: 90%;
+
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 15px;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      background: $secondary-color;
+      color: $primary-color;
+      border: none;
+      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      @include flex-center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      @include transition(background, 0.3s);
+      &:hover {
+        background: darken($secondary-color, 10%);
+      }
+    }
+  }
+}
+
+// =========================
+// 13. استجابة التصميم (Responsive)
+// =========================
+@media (max-width: 768px) {
+  .cruise-title {
+    font-size: 2.8rem;
+  }
+  .cruise-item {
+    padding: 20px;
+  }
+  .cruise-item-text {
+    font-size: 1.6rem;
+  }
+  .cruise-images img {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+// =========================
+// 14. كتل فيلر (Filler Blocks) لتوسيع الملف (مثال)
+// =========================
+@for $i from 1 through 20 {
+  .filler-#{$i} {
+    padding: 2px;
+    margin: 2px;
+    border: 1px dotted rgba(0, 0, 0, 0.1);
+  }
+}
