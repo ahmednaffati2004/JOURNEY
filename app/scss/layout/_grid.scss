@@ -1,0 +1,45 @@
+.container {
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 map-get($spacing, 'md');
+}
+
+.row {
+  @include flex(row, flex-start, stretch, wrap);
+  margin: 0 -#{map-get($spacing, 'md')};
+}
+
+.grid {
+  @include grid(1, map-get($spacing, 'md'));
+
+  @include respond-to('md') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-to('lg') {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include respond-to('xl') {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@for $i from 1 through 12 {
+  .col-#{$i} {
+    flex: 0 0 percentage($i / 12);
+    max-width: percentage($i / 12);
+  }
+}
+
+@each $breakpoint, $width in $breakpoints {
+  @include respond-to($breakpoint) {
+    @for $i from 1 through 12 {
+      .col-#{$breakpoint}-#{$i} {
+        flex: 0 0 percentage($i / 12);
+        max-width: percentage($i / 12);
+      }
+    }
+  }
+} 

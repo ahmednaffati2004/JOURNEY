@@ -1,0 +1,20 @@
+// Mobile First Approach
+@include respond-to('sm') {
+  // Styles for 576px and up
+}
+
+@include respond-to('md') {
+  // Styles for 768px and up
+}
+
+@include respond-to('lg') {
+  // Styles for 992px and up
+}
+
+@include respond-to('xl') {
+  // Styles for 1200px and up
+}
+
+@include respond-to('xxl') {
+  // Styles for 1400px and up
+} 

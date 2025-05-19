@@ -1,0 +1,121 @@
+// Colors
+$colors: (
+  'primary': (
+    'base': #F7931E,
+    'light': lighten(#F7931E, 10%),
+    'dark': darken(#F7931E, 10%)
+  ),
+  'text': (
+    'primary': #081E2A,
+    'secondary': #4F545A,
+    'light': #B4B4B4
+  ),
+  'background': (
+    'light': #FFFFFF,
+    'dark': #1D231F,
+    'gray': #F4F6F8
+  ),
+  'border': #EDEEEE,
+  'success': #28A745,
+  'error': #FF4757
+);
+
+// Typography
+$font-weights: (
+  'regular': 400,
+  'medium': 500,
+  'semibold': 600,
+  'bold': 700,
+  'extrabold': 800
+);
+
+// Border radius
+$border-radius: (
+  'sm': 4px,
+  'md': 8px,
+  'lg': 16px,
+  'full': 9999px
+);
+
+// Z-index management
+$z-index: (
+  'modal': 1000,
+  'overlay': 900,
+  'dropdown': 800,
+  'header': 700,
+  'footer': 600,
+  'base': 1
+);
+
+// Typography
+$font-primary: 'Plus Jakarta Sans', sans-serif;
+$font-size-base: 16px;
+$line-height-base: 1.8;
+
+// Breakpoints
+$breakpoints: (
+  'sm': 576px,
+  'md': 768px,
+  'lg': 992px,
+  'xl': 1200px,
+  'xxl': 1400px
+);
+
+// Spacing
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: $spacer * .25,  // 4px
+  2: $spacer * .5,   // 8px
+  3: $spacer,        // 16px
+  4: $spacer * 1.5,  // 24px
+  5: $spacer * 3     // 48px
+);
+
+$font-size: 15px;
+$font-line: 26px;
+$font-family: "Plus Jakarta Sans", sans-serif;
+$font-text: "DM Sans", sans-serif;
+$font-secondary: "Yesteryear", sans-serif;
+$fontIcon: "icomoon";
+
+$h1-fs: 65px;
+$h1-lh: 82px;
+
+$h2-fs: 50px;
+$h2-lh: 60px;
+
+$h3-fs: 32px;
+$h3-lh: 44.2px;
+
+$h4-fs: 22px;
+$h4-lh: 30px;
+
+$h5-fs: 20px;
+$h5-lh: 25.2px;
+
+$h6-fs: 18px;
+$h6-lh: 30px;
+
+$black:#000000;
+
+$secondary: #F7931E;
+$main:#081E2A;
+$text:#4F545A;
+$text2:#0A0A0A;
+$text3:#83827F;
+$text4:#B4B4B4;
+$text5:#B6C2D4;
+$pink:#FF494F;
+$bg1:#EBEBEB;
+$bg2:#DCDCDC;
+$bg3:#F3F8F6;
+$bg4:#1D231F;
+$bg5:#F4F6F8;
+$bg6:#212622;
+$bg7:#14B0C3;
+$bg8:#F1F6F4;
+$bg9:#EEE9E9;
+$bg10:#E0F4F3;
+$bg11:#1C231F;
+$bg12:#021B32;

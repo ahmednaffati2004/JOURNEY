@@ -1,0 +1,48 @@
+// Media Queries
+@mixin respond-to($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+    @media (min-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+}
+
+// Flexbox
+@mixin flex($direction: row, $justify: flex-start, $align: stretch, $wrap: nowrap) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  flex-wrap: $wrap;
+}
+
+// Grid
+@mixin grid($columns: 1, $gap: map-get($spacing, 'md')) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  gap: $gap;
+}
+
+// Typography
+@mixin font-size($size, $line-height: 1.5) {
+  font-size: map-get($font-sizes, $size);
+  line-height: $line-height;
+}
+
+// Transitions
+@mixin transition($properties...) {
+  $transitions: ();
+  @each $property in $properties {
+    $transitions: append($transitions, $property 0.3s ease, comma);
+  }
+  transition: $transitions;
+}
+
+// Hover effect
+@mixin hover {
+  @media (hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+} 

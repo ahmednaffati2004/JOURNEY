@@ -1,0 +1,24 @@
+// Spacing function
+@function spacing($key) {
+  @if map-has-key($spacing, $key) {
+    @return map-get($spacing, $key);
+  }
+  @warn "Unknown spacing key: #{$key}";
+  @return null;
+}
+
+// Color function
+@function color($category, $shade: 'base') {
+  @if map-has-key($colors, $category) {
+    $color: map-get($colors, $category);
+    @if type-of($color) == 'map' {
+      @if map-has-key($color, $shade) {
+        @return map-get($color, $shade);
+      }
+    } @else {
+      @return $color;
+    }
+  }
+  @warn "Unknown color: #{$category}, #{$shade}";
+  @return null;
+} 
