@@ -8079,3 +8079,16 @@ gap: 18px;
  }
 }
                    
+
+
+
+
+
+
+
+.gallery-page .tf-container,
+.gallery-page .row,
+.gallery-page .col-lg-12 {
+  padding: -10px !important;
+  margin:-10px !important;
+}
